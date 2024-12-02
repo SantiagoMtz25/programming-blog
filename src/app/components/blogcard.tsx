@@ -30,7 +30,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   readTime,
 }) => {
   return (
-    <div className="h-[28rem] flex flex-col w-[18rem] rounded-md justify-between content-start">
+    <div className="h-[28rem] flex flex-col w-[18rem] rounded-md justify-between content-start mb-6">
       <div className="h-48 w-full relative mb-2">
         <Image
           src={image}

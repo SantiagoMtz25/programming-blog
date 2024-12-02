@@ -6,11 +6,19 @@ import { motion } from "framer-motion";
 import XDivider from "./components/x-divider";
 import BlogCard from "./components/blogcard";
 import { blogCardVariants } from "./components/blogcard";
+import { useInView } from "framer-motion";
+import React from "react";
 
 export default function Home() {
+  const portfolioRef = React.useRef(null);
+  const isInView = useInView(portfolioRef, { once: true });
+
   return (
     <section className="w-full flex flex-col justify-start items-center">
-      <div id='about' className="w-full bg-[#b3c8cf] py-12 flex flex-col items-center">
+      <div
+        id="about"
+        className="w-full bg-[#b3c8cf] py-12 flex flex-col items-center"
+      >
         <motion.h1
           className="text-center text-4xl font-serif tracking-wider mb-4"
           initial={{ opacity: 0, x: -300 }}
@@ -70,14 +78,41 @@ export default function Home() {
             </motion.div>
           ))}
         </section>
-
-        <XDivider />
-
-        {/* Contact */}
-        <section id="related" className="">
-
-        </section>
       </div>
+
+      {/* Contact */}
+      <section
+        id="related"
+        className="w-full bg-[#b3c8cf] py-12 flex justify-center"
+      >
+        <div className="flex justify-between w-3/5">
+          <motion.div 
+            className="flex flex-col"
+            ref={portfolioRef}
+            initial={{ opacity: 0, x: -50 }}
+            animate={ isInView ? { opacity: 1, x: 0 } : { opacity: 0 }}
+            transition={{ duration: 1.5 }}
+          >
+            <h3 className="text-xl font-serif">More of my work</h3>
+            <p className="w-4/5 text-slate-700">
+              If you would like to know more about me or my experience, I invite
+              you to visit this website.
+            </p>
+          </motion.div>
+          <motion.a 
+            className='self-center bg-[#F1F0E8] px-6 py-1 rounded-md
+            hover:scale-105 active:scale-100 font-serif'
+            href="https://smv-alpha.vercel.app/" 
+            target="_blank" 
+            ref={portfolioRef}
+            initial={{ opacity: 0,  }}
+            animate={ isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 1.5 }}
+          >  
+            Visit
+          </motion.a>
+        </div>
+      </section>
     </section>
   );
 }

@@ -1,6 +1,7 @@
 import CSSImage from '../public/css.jpg'
 import Linux from '../public/linux.jpg'
 import SoftwareArchitecture from '../public/architecture.jpg'
+import Copilot from '../public/copilot.png'
 
 export const navLinks = [
   {
@@ -45,6 +46,9 @@ export const filters = [
   {
     filter: "Linux",
   },
+  {
+    filter: "Other",
+  },
 ] as const;
 
 export const blogCardsData = [
@@ -71,5 +75,14 @@ export const blogCardsData = [
     topics: 'Book',
     readTime: '5min read',
     date: '01 Dec, 2024',
+  },
+  { 
+    image: Copilot,
+    title: 'Deactivating Github Copilot',
+    description: 'In this article a list a number of reasons why you should deactivate Copilot or similar AI tools as a student.',
+    topics: 'Other',
+    readTime: '3min read',
+    date: '01 Dec, 2024',
+
   },
 ];

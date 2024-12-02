@@ -37,20 +37,25 @@ const Header = () => {
 
         <h1 className="text-3xl font-serif w-22 p-4">SMV Blog</h1>
 
-        <motion.nav 
-          className="hidden sm:block p-4"
-        >
-          <ul className="flex gap-8 text-lg">
-            {navLinks.map((obj, i) => (
-              <li
-                key={i}
-                className="hover:scale-110 transition active:scale-105"
-              >
-                <Link href={obj.hash}>{obj.name}</Link>
-              </li>
-            ))}
-          </ul>
-        </motion.nav>
+        {/* Nav in main page */}
+        {pathname === '/subscribe' ? <></> : (
+          <motion.nav 
+            className="hidden sm:block p-4"
+          >
+            <ul className="flex gap-8 text-lg">
+              {navLinks.map((obj, i) => (
+                <li
+                  key={i}
+                  className="hover:scale-110 transition active:scale-105"
+                >
+                  <Link href={obj.hash}>{obj.name}</Link>
+                </li>
+              ))}
+            </ul>
+          </motion.nav>
+        )}
+
+        {/* Subscribe button */}
         <Link 
           href={`${pathname === '/subscribe' ? '/' : '/subscribe' }`}
         >

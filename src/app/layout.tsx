@@ -29,7 +29,7 @@ export default function RootLayout({
     <html lang="en" className="!scroll-smooth">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased 
-        h-dvh grid grid-rows-[auto_1fr_auto]`}
+        h-dvh grid grid-rows-[auto_1fr_auto] relative`}
       >
         <Header />
         {children}

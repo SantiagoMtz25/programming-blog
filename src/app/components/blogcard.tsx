@@ -1,6 +1,7 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import ArticleButton from "./articlebutton";
+import Link from "next/link";
 
 interface BlogCardProps {
   image: StaticImageData;
@@ -8,6 +9,7 @@ interface BlogCardProps {
   description: string;
   topics: string;
   readTime: string;
+  link: string;
 }
 
 export const blogCardVariants = {
@@ -16,7 +18,7 @@ export const blogCardVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      delay: 0.2 + i * 0.2, 
+      delay: 0.2 + i * 0.2,
       duration: 0.5,
     },
   }),
@@ -28,6 +30,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   description,
   topics,
   readTime,
+  link,
 }) => {
   return (
     <div className="h-[28rem] flex flex-col w-[18rem] rounded-md justify-between content-start mb-6">
@@ -48,7 +51,9 @@ const BlogCard: React.FC<BlogCardProps> = ({
       </div>
       <h2 className="text-lg font-bold mb-2">{title}</h2>
       <p className="text-slate-600 mb-2">{description}</p>
-      <ArticleButton />
+      <Link href={`${link}`}>
+        <ArticleButton />
+      </Link>
     </div>
   );
 };

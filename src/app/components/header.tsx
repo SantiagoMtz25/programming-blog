@@ -12,6 +12,8 @@ import { usePathname } from "next/navigation";
 const Header = () => {
   const [isNavbarVisible, setIsNavbarVisible] = React.useState<boolean>(false);
   const pathname = usePathname();
+  const splitPath = pathname.split('/');
+  const checkPath = splitPath[1];
 
   return (
     <motion.header 
@@ -38,7 +40,7 @@ const Header = () => {
         <h1 className="text-3xl font-serif w-22 p-4">SMV Blog</h1>
 
         {/* Nav in main page */}
-        {pathname === '/subscribe' ? <></> : (
+        {pathname !== '/' ? <></> : (
           <motion.nav 
             className="hidden sm:block p-4"
           >
@@ -57,7 +59,7 @@ const Header = () => {
 
         {/* Subscribe button */}
         <Link 
-          href={`${pathname === '/subscribe' ? '/' : '/subscribe' }`}
+          href={`${pathname === '/subscribe' ? '/' : checkPath === 'articles' ? '/' : '/subscribe' }`}
         >
           <button
             className="hidden sm:flex roup items-center gap-2
@@ -68,7 +70,7 @@ const Header = () => {
             before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-4 rounded-full
             active:scale-90 group"
           >
-            {pathname === '/subscribe' ? 'Return' : 'Subscribe'}
+            {pathname !== '/' ? 'Return' : 'Subscribe'}
             <Image
               src={ArrowLeft}
               width={16}

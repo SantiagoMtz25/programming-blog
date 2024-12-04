@@ -2,11 +2,20 @@
 
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Popup from '../components/popup';
 
 const Page = () => {
   const [showPrivacyPolicy, setShowPrivacyPolicy] =
     React.useState<boolean>(false);
   const [email, setEmail] = React.useState<string>("");
+  const [isPopupOpen, setPopupOpen] = React.useState<boolean>(false);
+
+  const handleClosePopup = () => {
+    setPopupOpen(false);
+  };
+  
+  const handleCancelSubscription = () => {
+  };
 
   return (
     <motion.div 
@@ -61,7 +70,7 @@ const Page = () => {
             <p className="text-slate-600 my-4">
               If you decide tu subscribe with your email, you will only receive
               notifications in regard with new articles or new functionalities
-              withing and only within this website.
+              within and only within this website.
             </p>
             <p className="text-slate-600 mb-4">
               Your email will be kept private and not be shared to third
@@ -69,11 +78,23 @@ const Page = () => {
             </p>
             <p className="text-slate-600">
               If you wish to be removed from the notification lists please click on{' '}
-              <span className="font-semibold hover:underline cursor-pointer">cancel.</span>
+              <span 
+                onClick={() => setPopupOpen(true)}
+                className="font-semibold hover:underline cursor-pointer"
+              >
+                cancel.
+              </span>
             </p>
           </motion.div>
         )}
       </AnimatePresence>
+
+      <Popup  
+        description='If you wish to unsubscribe please enter the email you registered with:'
+        isOpen={isPopupOpen}
+        onClose={handleClosePopup}
+        onSubmit={handleCancelSubscription}
+      />
     </motion.div>
   );
 };

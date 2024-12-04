@@ -74,6 +74,7 @@ export default function Home() {
                 description={blog.description}
                 topics={blog.topics}
                 readTime={blog.readTime}
+                link={blog.link}
               />
             </motion.div>
           ))}
